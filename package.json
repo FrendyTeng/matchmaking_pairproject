@@ -1,10 +1,11 @@
 {
   "name": "matchmaking_pairproject",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0"
   }
 }

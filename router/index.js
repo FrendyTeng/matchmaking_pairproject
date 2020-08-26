@@ -1,0 +1,9 @@
+// File ini adalah terminal bagi semua router.
+// Jadi semua router di require ke sini
+
+const r = require("express").Router()
+const userRouter = require("./user.router")
+
+r.use("/users", userRouter)
+
+module.exports = r
