@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Form Register</h1>
+        <hr>
+        <form action= "/users/register" method= "POST" >
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td><input type= "text" name="inputFirstName"></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type= "text" name="inputLastName"></td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td><input type= "text" name="inputUserName"></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input type= "password" name="inputPassword"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type= "email" name="inputEmail"></td>
+                </tr>
+                <tr>
+                    <th>Birth Date</th>
+                    <td><input type= "text" name="inputBirthDate"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <input type="radio" id="female" name="inputGender" value="female">
+                        <label for="female">Female</label>
+                        <input type="radio" id="male" name="inputGender" value="male">
+                        <label for="male">Male</label>    
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><button type= "submit">REGISTER</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

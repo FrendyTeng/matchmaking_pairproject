@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>List All User</title>
+    </head>
+    <h1>All User</h1>
+    <hr>
+    <body>
+        <%#  JSON.stringify(data) %>
+        <table border= 1>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+            <% for(let i = 0; i < data.length; i++){ %>
+            <tr>
+                <td><%= data[i].firstName %></td>
+                <td><%= data[i].lastName %></td>
+                <td><%= data[i].birthDate %></td>
+                <td><%= data[i].gender %></td>
+                <td>
+                    <a href="/users/edit/<%= data[i].id %>">Edit</a>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
