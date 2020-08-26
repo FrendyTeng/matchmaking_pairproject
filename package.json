@@ -1,0 +1,29 @@
+{
+  "name": "matchmaking_pairproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrendyTeng/matchmaking_pairproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrendyTeng/matchmaking_pairproject/issues"
+  },
+  "homepage": "https://github.com/FrendyTeng/matchmaking_pairproject#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "pg": "^8.3.2",
+    "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
