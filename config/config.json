@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "tm123",
+    "password": "admin",
     "database": "match_making_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
