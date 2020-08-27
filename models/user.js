@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate(self){
         self.password = hashPassword(self.password)
-        self.image = "/noimage.jpg"
+        self.image = "/noimage.jpeg"
       }
     },
     sequelize,
