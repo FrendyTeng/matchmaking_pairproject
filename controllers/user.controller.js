@@ -84,7 +84,7 @@ class UserController {
   }
 
   static registerPage(req, res){
-    res.render("registerPage")
+    res.render("registerPage", {errors: ""})
   }
 
   static profilePage(req, res){
