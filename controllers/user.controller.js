@@ -44,7 +44,7 @@ class UserController {
     })
 
     .then(data => {
-      req.session.dataId = data.id
+      req.session.uid = data.id
       res.redirect(`/users/profile/${data.id}`)
     })
     .catch(err => {
