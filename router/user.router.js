@@ -11,6 +11,7 @@ r.get("/profile/:id", c.profilePage);
 r.get("/listAll", c.listAllPage);
 r.get("/edit/", c.editPage);
 r.post("/edit/", c.editHandler);
+r.get("/random", c.randomPage);
 
 
 r.get("/like/:id", m.likePage)
