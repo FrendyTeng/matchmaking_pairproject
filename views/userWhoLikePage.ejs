@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>People Who Like Me</title>
+    </head>
+    <body>
+        
+    <h1>People Who Like Me</h1>
+    <%- include('partials/menu') %>
+    <hr>
+        <table border= 1>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+            </tr>
+            <% for(let i = 0; i < data.length; i++){ %>
+            <tr>
+                <td><%= data[i].firstName %></td>
+                <td><%= data[i].lastName %></td>
+                <td><%= data[i].birthDate %></td>
+                <td><%= data[i].gender %></td>
+            <% } %>
+        </table>
+    </body>
+</html>
