@@ -65,6 +65,20 @@ class UserController {
       res.send(`Errornya adalah ${err}`)
     })
   }
+  
+  static editPage(req, res){
+    let id = Number(req.session.dataId);
+
+    User.findByPk(id)
+    .then(hasil => {
+      let data = [];
+      data.push(hasil)
+      res.render("editPage", { data })
+    })
+    .catch(err => {
+      res.send(`Errornya adalah ${err}`)
+    })
+  }
 
 
   static listAllPage(req, res){
