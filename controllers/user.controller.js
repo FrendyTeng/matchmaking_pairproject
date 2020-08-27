@@ -120,7 +120,7 @@ class UserController {
 
     User.findOne({ where: {id: otherId}})
     .then(user => {
-      res.render("profilePage", { user, isMe: otherId === myId })
+      res.render("profilePage", { user, isMe: otherId === myId, fullName: user.fullName })
     })
     .catch(err => res.send(err))
   }

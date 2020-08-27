@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.MatchMaking, {foreignKey: 'fkUserA'});
       User.hasMany(models.MatchMaking, {foreignKey: 'fkUserB'});
     }
+
+    get fullName(){
+      return this.firstName + " " + this.lastName
+    }
   };
   User.init({
     firstName: DataTypes.STRING,
