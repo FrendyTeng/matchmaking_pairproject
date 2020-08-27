@@ -72,12 +72,21 @@ class UserController {
   static editHandler(req, res){
     let id = Number(req.session.uid)
 
+    const payload = {}
+    if(req.file){
+      payload["image"] = "/users/"+ req.file.filename
+    }
+
+    if(req.body.inputBirthDate){
+      payload["birthDate"] = new Date(req.body.inputBirthDate.toString())
+    }
+
     User.update({
       firstName: req.body.inputFirstName,
       lastName: req.body.inputLastName,
-      birthDate: req.body.inputBirthDate,
       gender: req.body.inputGender,
-      email: req.body.inputEmail
+      bio: req.body.bio,
+      ...payload
     }, { where: {id} })
     .then(data => {
       res.redirect(`/users/profile/${id}`)
@@ -121,10 +130,8 @@ class UserController {
     let id = Number(req.session.uid);
 
     User.findByPk(id)
-    .then(hasil => {
-      let data = [];
-      data.push(hasil)
-      res.render("editPage", { data })
+    .then(user => {
+      res.render("editPage", { user, errors: "" })
     })
     .catch(err => {
       res.send(`Errornya adalah ${err}`)

@@ -25,11 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     birthDate: DataTypes.DATE,
     gender: DataTypes.STRING,
     image: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    bio: DataTypes.TEXT
   }, {
     hooks: {
       beforeCreate(self){
         self.password = hashPassword(self.password)
+        self.image = "/noimage.jpg"
       }
     },
     sequelize,
