@@ -33,6 +33,18 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     sequelize,
+    validate: {
+      checkEmpty(){
+        if(this.firstName === '' || this.lastName === '' || this.email === '' || this.password === ''){
+          throw new Error('All form must be filled')
+        }
+      },
+      checkFirstNameLastName(){
+        if(this.firstName === this.lastName){
+          throw new Error('First Name and Last Name cannot be the same')
+        }
+      }
+    },
     modelName: 'User',
   });
   return User;
