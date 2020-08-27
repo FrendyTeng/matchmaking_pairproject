@@ -64,6 +64,11 @@ class UserController {
     })
   }
 
+  static meHandler(req, res){
+    const id = req.session.uid 
+    res.redirect(`/users/profile/${id}`)
+  }
+
   static editHandler(req, res){
     let id = Number(req.session.uid)
 
@@ -85,14 +90,19 @@ class UserController {
 
   // Suffix 'Page' menadakan kalau method ini digunakan untuk hal-hal yang berhungan dengan UI (tampilan) dari login.
   static loginPage(req, res) {
+    const myid = req.session.uid
+    if(myid) return res.redirect(`/users/profile/${myid}`)
+    
     const errors = req.query.errors || ""
     res.render("login", { errors })
   }
 
   static registerPage(req, res){
+
     const message = req.app.locals.message || '';
     delete req.app.locals.message;
-    res.render("registerPage", { message })
+    res.render("registerPage", { message, errors: "" })
+
   }
 
   static profilePage(req, res){
