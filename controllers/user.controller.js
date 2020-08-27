@@ -53,7 +53,7 @@ class UserController {
   }
 
   static editHandler(req, res){
-    let id = Number(req.session.dataId)
+    let id = Number(req.session.uid)
 
     User.update({
       firstName: req.body.inputFirstName,
@@ -96,7 +96,7 @@ class UserController {
   }
   
   static editPage(req, res){
-    let id = Number(req.session.dataId);
+    let id = Number(req.session.uid);
 
     User.findByPk(id)
     .then(hasil => {
