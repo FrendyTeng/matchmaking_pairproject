@@ -1,10 +1,39 @@
 "use strict"
 
 const { User } = require('../models');
+const { comparePlainWithHash } = require("../helpers")
 
 class UserController {
   // Suffix 'Handler' menadakan kalau method ini digunakan untuk hal-hal yang berhungan dengan logic dari login.
-  static loginHandler(req, res) {}
+  static loginHandler(req, res) {
+    const {email, password} = req.body
+
+    User.findOne({ where: {email} })
+      .then(user => {
+        
+        if(!user) return res.redirect("?errors=" + "Invalid email or password")
+        const isValid = comparePlainWithHash(password, user.password)
+
+        if(!isValid){
+          return res.redirect("?errors=" + "Invalid email or password")
+        }
+
+        req.session.uid = user.id
+        res.redirect("/users/profile/"+ user.id)
+        
+      }).catch(err => {
+        res.send(err)
+      })
+
+  }
+
+  static logoutHandler(req, res){
+    req.session.destroy((err)=>{
+      if(err) return res.redirect("")
+      return res.redirect("/users/login")
+    })
+    
+  }
 
   static registerHandler(req, res){
     User.create({
@@ -42,10 +71,10 @@ class UserController {
   }
 
 
-
   // Suffix 'Page' menadakan kalau method ini digunakan untuk hal-hal yang berhungan dengan UI (tampilan) dari login.
   static loginPage(req, res) {
-    res.send("Login Page")
+    const errors = req.query.errors || ""
+    res.render("login", { errors })
   }
 
   static registerPage(req, res){
