@@ -1,5 +1,6 @@
 const r = require("express").Router()
 const c = require("../controllers/user.controller")
+const m = require("../controllers/matchMakingController.js")
 
 const auth = require("../middlewares/auth")
 
@@ -13,5 +14,9 @@ r.get("/profile/:id",  [auth] , c.profilePage);
 r.get("/listAll", [auth],c.listAllPage);
 r.get("/edit/", [auth], c.editPage);
 r.post("/edit/",[auth], c.editHandler);
+
+
+r.get("/like/:id", m.likePage)
+r.get("/ilike", m.userILikePage)
 
 module.exports = r
