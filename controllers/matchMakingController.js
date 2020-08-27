@@ -6,7 +6,7 @@ const { sequelize } = require('../models')
 class MatchMakingController {
     static likePage(req, res){
         let idUserB = Number(req.params.id);
-        let idUserA = req.session.dataId;
+        let idUserA = req.session.uid;
 
         MatchMaking.create({
             fkUserA : idUserA,
@@ -21,7 +21,7 @@ class MatchMakingController {
     }
 
     static userILikePage(req, res){
-        let dataId = req.session.dataId
+        let dataId = req.session.uid
         // console.log('sdoivgaufibh ' + dataId)
         MatchMaking.findAll({where: {fkUserA: dataId},
         include: User })
@@ -36,7 +36,7 @@ class MatchMakingController {
     }
 
     static userWhoLikePage(req, res){
-        let dataId = req.session.dataId
+        let dataId = req.session.uid
         let query = `SELECT "Users"."firstName", "Users"."lastName", to_char("Users"."birthDate", 'DD Mon YYYY') "birthDate", "Users"."gender" 
         FROM "Users", "MatchMakings"
         WHERE "MatchMakings"."fkUserA" = "Users"."id"
