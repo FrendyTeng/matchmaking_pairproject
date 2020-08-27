@@ -66,22 +66,19 @@ class UserController {
     })
   }
 
-  static editPage(req, res){
-    let id = Number(req.session.dataId);
 
-    User.findByPk(id)
-    .then(hasil => {
-      let data = [];
-      data.push(hasil)
-      res.render("editPage", { data })
+  static listAllPage(req, res){
+    User.findAll()
+    .then(data => {
+      console.log(req.session.id)
+      res.render("listAll", { data })
     })
     .catch(err => {
-      res.send(`Errornya adalah ${err}`)
+      res.send("Errornya adalah ${err}")
     })
   }
 
-  
-
+ 
 }
 
 module.exports = UserController
