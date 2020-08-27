@@ -45,11 +45,22 @@ class UserController {
     })
 
     .then(data => {
-      
       res.redirect(`/users/profile/${data.id}`)
     })
     .catch(err => {
-      res.render(`Errornya adalah ${err}`)
+      if(err.name === "SequelizeValidationError" ){
+        if(err.errors.length > 0){
+          let errors = err.errors.map(error => {
+            return error.message
+          })
+          console.log(errors);
+          req.app.locals.message = errors;
+        }
+        res.redirect("/users/register");
+      } else {
+        res.render(`Errornya adalah ${err}`)
+      }
+      
     })
   }
 
@@ -87,7 +98,11 @@ class UserController {
   }
 
   static registerPage(req, res){
-    res.render("registerPage", {errors: ""})
+
+    const message = req.app.locals.message || '';
+    delete req.app.locals.message;
+    res.render("registerPage", { message, errors: "" })
+
   }
 
   static profilePage(req, res){
@@ -128,8 +143,8 @@ class UserController {
   }
 
   static randomPage(req, res){
-    // let dataId = req.session.uid
-        let query = `SELECT * FROM "Users"
+    let dataId = req.session.uid
+        let query = `SELECT * FROM "Users" WHERE "Users"."id" != ${dataId}
         ORDER BY RANDOM()
         LIMIT 1;`
 
