@@ -1,11 +1,6 @@
-<html>
-    <head>
-        <title>People That I Like</title>
-    </head>
-    <body>
+<%- include("partials/header", { isLogged: true})%>
         
     <h1>People That I Like</h1>
-    <%- include('partials/menu') %>
     <hr>
         <table border= 1>
             <tr>
@@ -23,5 +18,5 @@
             </tr>
             <% } %>
         </table>
-    </body>
-</html>
+
+<%- include("partials/footer") %>

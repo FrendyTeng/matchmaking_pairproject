@@ -1,11 +1,6 @@
-<html>
-    <head>
-        <title>List All User</title>
-    </head>
-    <body>
-        
+<%- include("partials/header", { isLogged: true})%>
+
     <h1>All User</h1>
-    <%- include('partials/menu') %>
     <hr>
         <%#  JSON.stringify(data) %>
         <table border= 1>
@@ -28,5 +23,5 @@
             </tr>
             <% } %>
         </table>
-    </body>
-</html>
+
+<%- include("partials/footer") %>
