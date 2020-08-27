@@ -45,7 +45,7 @@ class UserController {
     })
 
     .then(data => {
-      req.session.uid = data.id
+      
       res.redirect(`/users/profile/${data.id}`)
     })
     .catch(err => {
@@ -120,7 +120,7 @@ class UserController {
   }
 
   static randomPage(req, res){
-    // let dataId = req.session.dataId
+    // let dataId = req.session.uid
         let query = `SELECT * FROM "Users"
         ORDER BY RANDOM()
         LIMIT 1;`

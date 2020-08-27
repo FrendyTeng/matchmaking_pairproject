@@ -7,7 +7,7 @@ const userRouter = require("./user.router")
 r.use("/users", userRouter)
 
 r.get("/", function(req, res){
-    res.redirect('/users/register')
+    res.redirect('/users/login')
 });
 
 module.exports = r
