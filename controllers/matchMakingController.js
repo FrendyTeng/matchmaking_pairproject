@@ -20,6 +20,21 @@ class MatchMakingController {
         })
     }
 
+    static userILikePage(req, res){
+        let dataId = req.session.dataId
+        // console.log('sdoivgaufibh ' + dataId)
+        MatchMaking.findAll({where: {fkUserA: dataId},
+        include: User })
+        .then(data => {
+            // console.log(data)
+            res.render('userILikePage', { data })
+        })
+        .catch(err => {
+            res.send(`Errornya adalah ${err}`)
+        })   
+        
+    }
+
 }
 
 module.exports = MatchMakingController;

@@ -14,5 +14,6 @@ r.post("/edit/", c.editHandler);
 
 
 r.get("/like/:id", m.likePage)
+r.get("/ilike", m.userILikePage)
 
 module.exports = r
