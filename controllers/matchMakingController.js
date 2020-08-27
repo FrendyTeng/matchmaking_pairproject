@@ -25,8 +25,8 @@ class MatchMakingController {
         // console.log('sdoivgaufibh ' + dataId)
         MatchMaking.findAll({where: {fkUserA: dataId},
         include: User })
-        .then(data => {
-            // console.log(data)
+        .then(users => {
+            const data = users.map(u => u.User)
             res.render('userILikePage', { data })
         })
         .catch(err => {
