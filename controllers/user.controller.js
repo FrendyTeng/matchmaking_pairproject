@@ -48,6 +48,17 @@ class UserController {
     })
   }
 
+  static listAllPage(req, res){
+    User.findAll()
+    .then(data => {
+      console.log(req.session.id)
+      res.render("listAll", { data })
+    })
+    .catch(err => {
+      res.send("Errornya adalah ${err}")
+    })
+  }
+
   
 
 }
