@@ -3,3 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.full_height{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-items: center;
+  justify-content: center;
+  border: 1px red;
+}
