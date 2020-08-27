@@ -1,6 +1,7 @@
 "use strict"
 
 const { User } = require('../models');
+const { sequelize } = require('../models')
 const { comparePlainWithHash } = require("../helpers")
 
 class UserController {
@@ -107,7 +108,6 @@ class UserController {
     })
   }
 
-
   static listAllPage(req, res){
     User.findAll()
     .then(data => {
@@ -117,6 +117,27 @@ class UserController {
     .catch(err => {
       res.send("Errornya adalah ${err}")
     })
+  }
+
+  static randomPage(req, res){
+    // let dataId = req.session.dataId
+        let query = `SELECT * FROM "Users"
+        ORDER BY RANDOM()
+        LIMIT 1;`
+
+        sequelize.query(query)
+        .then(hasil => {
+            //console.log(data[0])
+            let data = hasil[0];
+            // console.log('OKELAH' + data)
+            res.render('randomPage',{ data });
+            
+        })
+        .catch(err => {
+            console.log(err);
+            res.send(err);
+        })
+    
   }
 
  

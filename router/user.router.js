@@ -10,11 +10,12 @@ r.get("/logout", [auth], c.logoutHandler)
 
 r.get("/register", c.registerPage);
 r.post("/register", c.registerHandler);
+
 r.get("/profile/:id",  [auth] , c.profilePage);
 r.get("/listAll", [auth],c.listAllPage);
 r.get("/edit/", [auth], c.editPage);
 r.post("/edit/",[auth], c.editHandler);
-
+r.get("/random", c.randomPage);
 
 r.get("/like/:id", m.likePage)
 r.get("/ilike", m.userILikePage)
