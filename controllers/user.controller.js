@@ -19,7 +19,7 @@ class UserController {
         }
 
         req.session.uid = user.id
-        res.redirect("/users/profile/"+ user.id)
+        res.redirect("/users/profile/"+user.id)
         
       }).catch(err => {
         res.send(err)
@@ -82,17 +82,15 @@ class UserController {
   }
 
   static profilePage(req, res){
-    let id = Number(req.params.id);
+    const otherId = parseInt(req.params.id)
+    const myId = parseInt(req.session.uid)
 
-    User.findByPk(id)
-    .then(hasil => {
-      let data = [];
-      data.push(hasil);
-      res.render('profilePage', { data })
+    User.findOne({ where: {id: otherId}})
+    .then(user => {
+      console.log(otherId === myId)
+      res.render("profilePage", { user, isMe: otherId === myId })
     })
-    .catch(err => {
-      res.send(`Errornya adalah ${err}`)
-    })
+    .catch(err => res.send(err))
   }
   
   static editPage(req, res){
