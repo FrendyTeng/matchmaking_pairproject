@@ -1,0 +1,19 @@
+<div class="col-8">
+  <div class="card-body">
+      <div class="row justify-content-between">
+        <div class="col">
+          <h4 class="card-title"> <a href="/users/profile/<%= id %>"> <%= name %></a></h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-venus-mars font-weight-bold mr-3"></i><%= gender || "Belum ditentukan."%></li>
+            <li class="list-group-item"><i class="fa fa-google font-weight-bold mr-3"></i><%= email %></li>
+          </ul>
+        </div>
+        <div class="col-2 ">
+          <img width="120px" height="120px" src="<%= image %>" class="rounded" alt="...">
+          <div class="mx-auto mt-3">
+              <a class="btn btn-sm btn-block btn-danger" href="/users/like/<%= id %>" role="button"> <i class="fa fa-heart font-weight-bold mr-2"></i>Like</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

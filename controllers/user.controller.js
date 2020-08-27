@@ -1,6 +1,6 @@
 "use strict"
 
-const { User } = require('../models');
+const { User, Sequelize } = require('../models');
 const { sequelize } = require('../models')
 const { comparePlainWithHash } = require("../helpers")
 
@@ -139,9 +139,12 @@ class UserController {
   }
 
   static listAllPage(req, res){
-    User.findAll()
+    User.findAll({
+      where: {
+        id: {[Sequelize.Op.notIn]: [req.session.uid] }
+      }
+    })
     .then(data => {
-      console.log(req.session.id)
       res.render("listAll", { data })
     })
     .catch(err => {

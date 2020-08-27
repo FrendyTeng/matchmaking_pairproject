@@ -1,27 +1,15 @@
 <%- include("partials/header", { isLogged: true})%>
+    <div class="container mt-3">
+        <div class="row">
+            <% data.forEach(d => { %>
+            
+                <%- include("partials/card", { id: d.id, name: d.firstName, email: d.email, image: d.image, gender: d.gender }) %>
+                  
+              <% }) %>
+        </div>
+    </div>
 
-    <h1>All User</h1>
-    <hr>
-        <%#  JSON.stringify(data) %>
-        <table border= 1>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birth Date</th>
-                <th>Gender</th>
-                <th>Action</th>
-            </tr>
-            <% for(let i = 0; i < data.length; i++){ %>
-            <tr>
-                <td><%= data[i].firstName %></td>
-                <td><%= data[i].lastName %></td>
-                <td><%= data[i].birthDate %></td>
-                <td><%= data[i].gender %></td>
-                <td>
-                    <a href="/users/like/<%= data[i].id %>">Like</a>
-                </td>
-            </tr>
-            <% } %>
-        </table>
+
+    
 
 <%- include("partials/footer") %>
