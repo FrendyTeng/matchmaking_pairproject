@@ -1,30 +1,42 @@
 <%- include("partials/header", { isLogged: false})%>
 
-        <h1>Form Register</h1>
-        <hr>
-        <form action= "/users/register" method= "POST" >
-            <table>
-                <tr>
-                    <th>First Name</th>
-                    <td><input type= "text" name="inputFirstName"></td>
-                </tr>
-                <tr>
-                    <th>Last Name</th>
-                    <td><input type= "text" name="inputLastName"></td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td><input type= "email" name="inputEmail"></td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <td><input type= "password" name="inputPassword"></td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td><button type= "submit">REGISTER</button></td>
-                </tr>
-            </table>
-        </form>
+<div class="container full_height">
+    <h1 class="text-center">Register</h1>
+    <div class="row p-3">
+        
+      <div class="col-5 mx-auto">
+        <div class="card">
+          <div class="card-body p-10">
+            <form action="/users/register" method="post">
+            <% if (errors) { %>            
+                <div class="alert alert-danger mt-3" role="alert">
+                    <%= errors %>
+                </div>
+                <% }%>      
+                <div class="form-group">
+                  <label for="inputFirstName">First Name</label>
+                  <input type="text" class="form-control" id="inputFirstName"  placeholder="Enter First Name" name="inputFirstName">
+                </div>
+                <div class="form-group">
+                  <label for="inputLastName">Last Name</label>
+                  <input type="text" class="form-control" id="inputLastName"  placeholder="Enter Last Name" name="inputLastName">
+                </div>
+              <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail"  placeholder="Enter email" name="inputEmail">
+              </div>
+              <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword">
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+              <a class="btn btn-outline-success" href="/users/login" role="button">Login</a>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
-        <%- include("partials/footer") %>
+<%- include("partials/footer") %>
