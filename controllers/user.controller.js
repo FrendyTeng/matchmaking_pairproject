@@ -23,6 +23,24 @@ class UserController {
     })
   }
 
+  static editHandler(req, res){
+    let id = Number(req.session.dataId)
+
+    User.update({
+      firstName: req.body.inputFirstName,
+      lastName: req.body.inputLastName,
+      birthDate: req.body.inputBirthDate,
+      gender: req.body.inputGender,
+      email: req.body.inputEmail
+    }, { where: {id} })
+    .then(data => {
+      res.redirect(`/users/profile/${id}`)
+    })
+    .catch(err => {
+      res.send(`Errornya adalah ${err}`)
+    })
+  }
+
 
 
   // Suffix 'Page' menadakan kalau method ini digunakan untuk hal-hal yang berhungan dengan UI (tampilan) dari login.
@@ -48,6 +66,7 @@ class UserController {
     })
   }
 
+
   static listAllPage(req, res){
     User.findAll()
     .then(data => {
@@ -59,8 +78,7 @@ class UserController {
     })
   }
 
-  
-
+ 
 }
 
 module.exports = UserController

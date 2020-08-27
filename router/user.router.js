@@ -8,5 +8,7 @@ r.get("/register", c.registerPage);
 r.post("/register", c.registerHandler);
 r.get("/profile/:id", c.profilePage);
 r.get("/listAll", c.listAllPage);
+r.get("/edit/", c.editPage);
+r.post("/edit/", c.editHandler);
 
 module.exports = r
