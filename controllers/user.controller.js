@@ -74,6 +74,7 @@ class UserController {
       firstName: req.body.inputFirstName,
       lastName: req.body.inputLastName,
       gender: req.body.inputGender,
+      bio: req.body.bio,
       ...payload
     }, { where: {id} })
     .then(data => {

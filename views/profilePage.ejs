@@ -8,7 +8,7 @@
               <div class="row">
                 <div class="col-3">
                   
-                  <img width="200px" height="200px" src="<%= user.image %>" class="rounded" alt="...">
+                  <img width="180px" height="180px" src="<%= user.image %>" class="rounded" alt="...">
                   <div class="mx-auto mt-3">
                     <% if(isMe) { %>
                       <a class="btn btn-sm btn-block btn-warning" href="/users/edit" role="button"> Update	<i class="fa fa-edit font-weight-bold mr-3"></i></a>
@@ -19,7 +19,9 @@
                 </div>
                 <div class="col">
                   <h1 class="card-title"><%= user.firstName %></h1>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text ml-2">
+                    <%= user.bio|| "Belum ditentukan."%>
+                  </p>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><i class="fa fa-venus-mars font-weight-bold mr-3"></i><%= user.gender || "Belum ditentukan."%></li>
                     <li class="list-group-item"><i class="fa fa-star font-weight-bold mr-3"></i><%= user.birthDate || "Belum ditentukan."%></li>
