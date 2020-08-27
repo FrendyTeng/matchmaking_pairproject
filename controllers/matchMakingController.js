@@ -37,15 +37,15 @@ class MatchMakingController {
 
     static userWhoLikePage(req, res){
         let dataId = req.session.uid
-        let query = `SELECT "Users"."firstName", "Users"."lastName", to_char("Users"."birthDate", 'DD Mon YYYY') "birthDate", "Users"."gender" 
+        let query = `SELECT "Users"."id", "Users"."firstName", "Users"."image", "Users"."email", "Users"."lastName", to_char("Users"."birthDate", 'DD Mon YYYY') "birthDate", "Users"."gender" 
         FROM "Users", "MatchMakings"
         WHERE "MatchMakings"."fkUserA" = "Users"."id"
         AND "MatchMakings"."fkUserB" = ${dataId};`
 
         sequelize.query(query)
         .then(hasil => {
-            //console.log(data[0])
             let data = hasil[0];
+            console.log(data[0])
             res.render('userWhoLikePage',{ data });
         })
         .catch(err => {
