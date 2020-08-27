@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Edit Page</title>
+    </head>
+    <body>
+        <h1><%= data[0].firstName %> Edit Profile</h1>
+        <%- include('partials/menu') %>
+        <hr>
+        <form action= "/users/edit/" method= "POST" >
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td><input type= "text" name="inputFirstName" value= "<%= data[0].firstName%>"></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type= "text" name="inputLastName" value= "<%= data[0].lastName%>"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type= "email" name="inputEmail" value= "<%= data[0].email%>"></td>
+                </tr>
+                <tr>
+                    <th>Birth Date</th>
+                    <td><input type= "text" name="inputBirthDate" value= "<%= data[0].birthDate%>"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <input type="radio" id="female" name="inputGender" value="female" <%= data[0].gender === 'female' ? 'checked' : '' %>>
+                        <label for="female">Female</label>
+                        <input type="radio" id="male" name="inputGender" value="male" <%= data[0].gender === 'male' ? 'checked' : '' %>>
+                        <label for="male">Male</label>    
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><button type= "submit">EDIT</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
