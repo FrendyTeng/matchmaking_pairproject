@@ -1,8 +1,5 @@
-<html>
-    <head>
-        <title>Register Page</title>
-    </head>
-    <body>
+<%- include("partials/header", { isLogged: false})%>
+
         <h1>Form Register</h1>
         <hr>
         <form action= "/users/register" method= "POST" >
@@ -29,5 +26,5 @@
                 </tr>
             </table>
         </form>
-    </body>
-</html>
+
+        <%- include("partials/footer") %>

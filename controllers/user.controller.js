@@ -53,6 +53,11 @@ class UserController {
     })
   }
 
+  static meHandler(req, res){
+    const id = req.session.uid 
+    res.redirect(`/users/profile/${id}`)
+  }
+
   static editHandler(req, res){
     let id = Number(req.session.uid)
 
