@@ -79,6 +79,9 @@ class UserController {
 
   // Suffix 'Page' menadakan kalau method ini digunakan untuk hal-hal yang berhungan dengan UI (tampilan) dari login.
   static loginPage(req, res) {
+    const myid = req.session.uid
+    if(myid) return res.redirect(`/users/profile/${myid}`)
+    
     const errors = req.query.errors || ""
     res.render("login", { errors })
   }
