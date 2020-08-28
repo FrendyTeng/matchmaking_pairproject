@@ -1,6 +1,6 @@
 "use strict"
 
-const { User, Sequelize } = require('../models');
+const { User, Sequelize, MatchMaking } = require('../models');
 const { sequelize } = require('../models')
 const { comparePlainWithHash } = require("../helpers")
 
@@ -138,13 +138,20 @@ class UserController {
   }
 
   static listAllPage(req, res){
-    User.findAll({
-      where: {
-        id: {[Sequelize.Op.notIn]: [req.session.uid] }
-      }
+
+    MatchMaking.findAll({
+      where: { fkUserA: req.session.uid },
     })
-    .then(data => {
-      res.render("listAll", { data })
+    .then(ids => {
+      const idpart = ids.map(e => e.fkUserB)
+      return User.findAll({
+        where: {
+          id: {[Sequelize.Op.notIn]: [req.session.uid, ...idpart] },
+        }
+      })
+      .then(data => {
+        res.render("listAll", { data })
+      })
     })
     .catch(err => {
       res.send("Errornya adalah ${err}")

@@ -21,6 +21,7 @@ r.post("/edit/",[auth, upload.single('image')], c.editHandler);
 r.get("/random", [auth], c.randomPage);
 
 r.get("/like/:id", [auth], m.likePage)
+r.get("/unlike/:id", [auth], m.unlike)
 r.get("/ilike", [auth], m.userILikePage)
 r.get("/likeme", [auth], m.userWhoLikePage)
 

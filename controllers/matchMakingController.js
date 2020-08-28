@@ -20,6 +20,16 @@ class MatchMakingController {
         })
     }
 
+    static unlike(req, res){
+        let idUserB = Number(req.params.id);
+        MatchMaking.destroy({
+            where: {
+                fkUserB: idUserB
+            }
+        }).then(() => {res.redirect("/users/ilike")})
+        .catch(err => res.send(err))
+    }
+
     static userILikePage(req, res){
         let dataId = req.session.uid
         // console.log('sdoivgaufibh ' + dataId)

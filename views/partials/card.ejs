@@ -11,7 +11,7 @@
         <div class="col-2 ">
           <img width="120px" height="120px" src="<%= image %>" class="rounded" alt="...">
           <div class="mx-auto mt-3">
-              <a class="btn btn-sm btn-block btn-danger" href="/users/like/<%= id %>" role="button"> <i class="fa fa-heart font-weight-bold mr-2"></i>Like</a>
+              <a class="btn btn-sm btn-block btn-<%= action === 'unlike'? 'secondary': 'danger'%>" href="/users/<%= action %>/<%= id %>" role="button"> <i class="fa fa-heart font-weight-bold mr-2"></i><%= action %></a>
           </div>
         </div>
       </div>

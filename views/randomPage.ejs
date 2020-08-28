@@ -10,7 +10,7 @@
         <div class="row">
             <% data.forEach(d => { %>
             
-                <%- include("partials/card", { id: d.id, name: d.firstName, email: d.email, image: d.image, gender: d.gender }) %>
+                <%- include("partials/card", { id: d.id, name: d.firstName, email: d.email, image: d.image, gender: d.gender, action: "like" }) %>
                   
               <% }) %>
         </div>
