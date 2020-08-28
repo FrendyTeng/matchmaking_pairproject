@@ -9,9 +9,9 @@
         <div class="card">
           <div class="card-body p-10">
             <form action="/users/register" method="post">
-            <% if (errors) { %>            
+              <% if (message) { %>            
                 <div class="alert alert-danger mt-3" role="alert">
-                    <%= errors %>
+                    <%= message %>
                 </div>
                 <% }%>      
                 <div class="form-group">
